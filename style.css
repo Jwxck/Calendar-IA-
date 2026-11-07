@@ -8,7 +8,6 @@
 	--text-color: #20382f;
 	--muted-text-color: #78827a;
 	--border-color: #e1e5dc;
-	--line-color: #e8eee8;
 	--primary-soft-color: #dcebe1;
 	--primary-contrast-color: #fffdf6;
 	--shadow-color: #304d3510;
@@ -21,7 +20,6 @@
 	--panel-shadow: 0 -2px 12px var(--shadow-color);
 	--button-shadow: 0 3px 8px var(--shadow-color);
 	--safe-bottom: env(safe-area-inset-bottom, 0px);
-	--note-baseline-correction: 5px;
 	font-family: var(--body-font);
 	font-synthesis: none;
 }
@@ -35,7 +33,6 @@
 	--text-color: var(--custom-text-color, #20382f);
 	--muted-text-color: #78827a;
 	--border-color: #e1e5dc;
-	--line-color: #e8eee8;
 	--primary-soft-color: #dcebe1;
 	--background-decoration: radial-gradient(#d8e1d7 0.65px, transparent 0.65px);
 	--body-font: "Avenir Next", Avenir, "Segoe UI", sans-serif;
@@ -45,7 +42,6 @@
 	--border-width: 1px;
 	--panel-shadow: 0 -2px 12px #304d3510;
 	--button-shadow: 0 3px 8px #315d4a2b;
-	--note-baseline-correction: 5px;
 }
 
 :root[data-style="cartoon"] {
@@ -57,7 +53,6 @@
 	--text-color: var(--custom-text-color, #211b2c);
 	--muted-text-color: #625a73;
 	--border-color: #342b46;
-	--line-color: #d9e8eb;
 	--primary-soft-color: #e8dfff;
 	--background-decoration: radial-gradient(circle, #ffbf4570 1.5px, transparent 1.7px);
 	--body-font: "Trebuchet MS", "Avenir Next", sans-serif;
@@ -67,7 +62,6 @@
 	--border-width: 2px;
 	--panel-shadow: 4px 5px 0 #342b4622;
 	--button-shadow: 3px 3px 0 #342b4633;
-	--note-baseline-correction: 3px;
 }
 
 :root[data-style="editorial"] {
@@ -79,7 +73,6 @@
 	--text-color: var(--custom-text-color, #20232a);
 	--muted-text-color: #666b75;
 	--border-color: #9c9b9b;
-	--line-color: #e6d9d4;
 	--primary-soft-color: #dfe7f6;
 	--background-decoration: linear-gradient(90deg, transparent 0 24px, #c7493e13 24px 25px, transparent 25px 100%);
 	--body-font: "Avenir Next", "Segoe UI", sans-serif;
@@ -89,7 +82,6 @@
 	--border-width: 1px;
 	--panel-shadow: none;
 	--button-shadow: none;
-	--note-baseline-correction: -3px;
 }
 
 :root[data-style="brutalist"] {
@@ -101,7 +93,6 @@
 	--text-color: var(--custom-text-color, #111);
 	--muted-text-color: #282828;
 	--border-color: #111;
-	--line-color: #a7b3a5;
 	--primary-soft-color: #d5e5ff;
 	--cartoon-card-background: #e9fbff;
 	--cartoon-card-text: #211b2c;
@@ -113,7 +104,6 @@
 	--border-width: 2px;
 	--panel-shadow: 8px 8px 0 #111;
 	--button-shadow: 4px 4px 0 #111;
-	--note-baseline-correction: 0px;
 }
 
 :root[data-theme="dark"] {
@@ -124,7 +114,6 @@
 	--text-color: #edf2eb;
 	--muted-text-color: #adb9ae;
 	--border-color: #3a493e;
-	--line-color: #2b3930;
 	--primary-soft-color: #294438;
 	--primary-contrast-color: #fff;
 	--cartoon-card-background: #27343b;
@@ -143,7 +132,6 @@
 	--text-color: #fff;
 	--muted-text-color: #fff;
 	--border-color: #fff;
-	--line-color: #777;
 	--primary-soft-color: #292900;
 	--primary-contrast-color: #000;
 	--cartoon-card-background: #000;
@@ -224,10 +212,10 @@ button { color: inherit; font: inherit; }
 .day-card.has-note::after { position: absolute; bottom: 2px; width: 3px; height: 3px; content: ""; border-radius: 50%; background: var(--accent-color); }
 .day-card.is-selected.has-note::after { background: var(--primary-contrast-color); }
 
-.note-panel { position: relative; min-height: 0; margin: 0 1px; display: flex; flex: 1 1 auto; flex-direction: column; overflow: hidden; border: var(--border-width) solid var(--border-color); border-bottom: 0; border-radius: var(--radius-medium) var(--radius-medium) 0 0; background-color: var(--surface-color); background-image: linear-gradient(to bottom, transparent 31px, var(--line-color) 32px); background-size: 100% 32px; box-shadow: var(--panel-shadow); animation: rise-in .35s ease-out both; }
+.note-panel { position: relative; min-height: 0; margin: 0 1px; display: flex; flex: 1 1 auto; flex-direction: column; overflow: hidden; border: var(--border-width) solid var(--border-color); border-bottom: 0; border-radius: var(--radius-medium) var(--radius-medium) 0 0; background-color: var(--surface-color); box-shadow: var(--panel-shadow); animation: rise-in .35s ease-out both; }
 .app-shell:not(.is-editing) .note-panel { margin-bottom: var(--safe-bottom); }
-.paper-lines { min-height: 0; flex: 1 1 auto; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
-.note-editor { min-height: 100%; padding: calc(11px + var(--note-baseline-correction)) 15px 28px; color: var(--text-color); font-family: var(--body-font); font-size: 15px; line-height: 32px; outline: none; overflow-wrap: anywhere; caret-color: var(--accent-color); }
+.note-scroll-area { min-height: 0; flex: 1 1 auto; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+.note-editor { min-height: 100%; padding: 11px 15px 28px; color: var(--text-color); font-family: var(--body-font); font-size: 15px; line-height: 32px; outline: none; overflow-wrap: anywhere; caret-color: var(--accent-color); }
 .note-editor:empty::before { color: var(--muted-text-color); content: attr(data-placeholder); opacity: .7; pointer-events: none; }
 .note-editor ul, .note-editor ol { margin: 0; padding-left: 25px; }
 .note-editor li { padding-left: 2px; }
