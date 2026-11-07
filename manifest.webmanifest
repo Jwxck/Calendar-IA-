@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "Mon carnet - Notes par jour",
+  "short_name": "Mon carnet",
+  "description": "Un carnet de notes organisé par jour.",
+  "lang": "fr-FR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f2f5ef",
+  "theme_color": "#f2f5ef",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="theme-color" content="#f2f5ef" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-title" content="Mon carnet" />
+		<meta name="description" content="Un carnet de notes organisé par jour." />
+		<link rel="manifest" href="manifest.webmanifest" />
+		<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="icons/icon.svg" />
+		<link rel="stylesheet" href="icons/phosphor-icons/Fonts/bold/style.css" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Mon carnet</title>
+	</head>
+	<body>
+		<div class="app-shell">
+			<header class="topbar">
+				<div class="preference-control date-picker-control">
+					<button class="today-indicator menu-trigger" id="monthPickerButton" type="button" aria-label="Choisir un mois" aria-haspopup="true" aria-expanded="false" aria-controls="monthMenu">
+					<span class="today-indicator-dot" aria-hidden="true"></span>
+					<span id="currentDateLabel"></span>
+					</button>
+					<div class="preference-menu month-menu" id="monthMenu" aria-label="Choisir un mois" hidden>
+						<p class="menu-title">Aller à un mois</p>
+						<label class="month-field">Mois<select id="monthSelect"></select></label>
+						<label class="month-field">Année<input id="yearSelect" type="number" min="1" max="9999" inputmode="numeric" /></label>
+						<button class="menu-action" id="applyMonthButton" type="button">Afficher le mois</button>
+						<button class="menu-secondary-action" id="goTodayButton" type="button">Revenir à aujourd’hui</button>
+					</div>
+				</div>
+				<div class="appearance-controls">
+					<div class="preference-control">
+						<button class="appearance-button menu-trigger" id="themeButton" type="button" aria-label="Choisir le thème" aria-expanded="false" aria-controls="themeMenu" title="Thème">
+							<i class="ph-bold ph-sun" aria-hidden="true"></i>
+						</button>
+						<div class="preference-menu" id="themeMenu" aria-label="Thème d’affichage" hidden>
+							<p class="menu-title">Thème</p>
+							<button class="preference-option" type="button" data-theme-choice="system" aria-pressed="false"><span class="theme-swatch swatch-system" aria-hidden="true"></span>Système<span class="option-check" aria-hidden="true">✓</span></button>
+							<button class="preference-option" type="button" data-theme-choice="light" aria-pressed="false"><span class="theme-swatch swatch-light" aria-hidden="true"></span>Clair<span class="option-check" aria-hidden="true">✓</span></button>
+							<button class="preference-option" type="button" data-theme-choice="dark" aria-pressed="false"><span class="theme-swatch swatch-dark" aria-hidden="true"></span>Sombre<span class="option-check" aria-hidden="true">✓</span></button>
+							<button class="preference-option" type="button" data-theme-choice="contrast" aria-pressed="false"><span class="theme-swatch swatch-contrast" aria-hidden="true"></span>Contraste élevé<span class="option-check" aria-hidden="true">✓</span></button>
+						</div>
+					</div>
+					<div class="preference-control">
+						<button class="appearance-button menu-trigger" id="styleButton" type="button" aria-label="Choisir le style graphique" aria-expanded="false" aria-controls="styleMenu" title="Style graphique">
+							<i class="ph-bold ph-palette" aria-hidden="true"></i>
+						</button>
+						<div class="preference-menu style-menu" id="styleMenu" aria-label="Style graphique" hidden>
+							<p class="menu-title">Style graphique</p>
+							<button class="preference-option" type="button" data-style-choice="minimal" aria-pressed="false"><span class="style-swatch swatch-minimal" aria-hidden="true"></span>Moderne minimaliste<span class="option-check" aria-hidden="true">✓</span></button>
+							<button class="preference-option" type="button" data-style-choice="cartoon" aria-pressed="false"><span class="style-swatch swatch-cartoon" aria-hidden="true"></span>Cartoon<span class="option-check" aria-hidden="true">✓</span></button>
+							<button class="preference-option" type="button" data-style-choice="editorial" aria-pressed="false"><span class="style-swatch swatch-editorial" aria-hidden="true"></span>Éditorial<span class="option-check" aria-hidden="true">✓</span></button>
+							<button class="preference-option" type="button" data-style-choice="brutalist" aria-pressed="false"><span class="style-swatch swatch-brutalist" aria-hidden="true"></span>Brutaliste pop<span class="option-check" aria-hidden="true">✓</span></button>
+							<div class="palette-editor">
+								<p class="palette-title">Palette du style</p>
+								<label class="palette-field"><span>Principale</span><input type="color" data-palette-picker="primary" aria-label="Couleur principale" /><input type="text" data-palette-value="primary" aria-label="Valeur CSS de la couleur principale" spellcheck="false" /></label>
+								<label class="palette-field"><span>Accent</span><input type="color" data-palette-picker="accent" aria-label="Couleur d’accent" /><input type="text" data-palette-value="accent" aria-label="Valeur CSS de la couleur d’accent" spellcheck="false" /></label>
+								<label class="palette-field"><span>Fond</span><input type="color" data-palette-picker="background" aria-label="Couleur du fond" /><input type="text" data-palette-value="background" aria-label="Valeur CSS de la couleur du fond" spellcheck="false" /></label>
+								<label class="palette-field"><span>Surface</span><input type="color" data-palette-picker="surface" aria-label="Couleur des surfaces" /><input type="text" data-palette-value="surface" aria-label="Valeur CSS de la couleur des surfaces" spellcheck="false" /></label>
+								<label class="palette-field"><span>Texte</span><input type="color" data-palette-picker="text" aria-label="Couleur du texte" /><input type="text" data-palette-value="text" aria-label="Valeur CSS de la couleur du texte" spellcheck="false" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="preference-control">
+						<button class="appearance-button menu-trigger" id="settingsButton" type="button" aria-label="Paramètres" aria-expanded="false" aria-controls="settingsMenu" title="Paramètres">
+							<i class="ph-bold ph-gear-six" aria-hidden="true"></i>
+						</button>
+						<div class="preference-menu settings-menu" id="settingsMenu" aria-label="Paramètres" hidden>
+							<p class="menu-title">Paramètres</p>
+							<div class="storage-setting"><div class="storage-heading"><span>Stockage utilisé</span><span id="storageLabel">Calcul...</span></div><progress id="storageProgress" max="100" value="0" aria-label="Espace de stockage utilisé"></progress><span class="storage-detail" id="storageDetail"></span></div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<section class="calendar-section" aria-label="Choisir un jour">
+				<div class="calendar-heading">
+					<h2 id="monthLabel"></h2>
+				</div>
+				<nav class="day-rail" id="dayRail" aria-label="Jours de la semaine"></nav>
+			</section>
+
+			<main class="note-panel" aria-label="Bloc-notes du jour">
+				<div class="paper-lines">
+					<div id="noteEditor" class="note-editor" contenteditable="true" role="textbox" aria-label="Votre note pour ce jour" aria-multiline="true" data-placeholder="Écrivez votre journée ici..."></div>
+				</div>
+			</main>
+
+			<footer class="format-dock" aria-label="Mise en forme du texte">
+				<div class="tool-group">
+					<button class="tool-button strong-tool" data-command="bold" type="button" aria-label="Gras" title="Gras"><span aria-hidden="true">B</span></button>
+					<button class="tool-button italic-tool" data-command="italic" type="button" aria-label="Italique" title="Italique"><span aria-hidden="true">I</span></button>
+					<button class="tool-button underline-tool" data-command="underline" type="button" aria-label="Souligné" title="Souligné"><span aria-hidden="true">U</span></button>
+					<button class="tool-button strike-tool" data-command="strikeThrough" type="button" aria-label="Barré" title="Barré"><span aria-hidden="true">S</span></button>
+					<button class="tool-button checkbox-tool" id="checklistButton" type="button" aria-label="Insérer une case à cocher" title="Case à cocher"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v14H5zM8 12l2.5 2.5L16 9" /></svg></button>
+				</div>
+				<span class="saved-status" id="savedStatus" aria-live="polite"><span class="status-dot"></span> Enregistré</span>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
