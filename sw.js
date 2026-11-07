@@ -1,5 +1,5 @@
-const CACHE_NAME = "mon-carnet-v14";
-const APP_FILES = ["./", "./index.html", "./style.css", "./script.js", "./manifest.webmanifest", "./icons/icon.svg", "./icons/phosphor-icons/Fonts/bold/style.css", "./icons/phosphor-icons/Fonts/bold/Phosphor-Bold.woff2"];
+const CACHE_NAME = "mon-carnet-v15";
+const APP_FILES = ["./", "./index.html", "./style.css", "./script.js", "./manifest.webmanifest", "./icons-app/icon.svg", "./icons-app/sun-bold.svg", "./icons-app/palette-bold.svg", "./icons-app/gear-six-bold.svg"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES)));
